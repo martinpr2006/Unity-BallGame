@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed;
-    public Text scoreText;
-    public Text winText;
+    public TMP_Text scoreText;
+    public TMP_Text winText;
     public GameObject gate;
     private Rigidbody rb;
     public int score;
+    public AudioSource coinSound;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             score++;
+            coinSound.Play();
             SetScoreText();
 
             if (score >= 5)
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (other.gameObject.CompareTag("Danger"))
+        if (other.gameObject.tag == "Danger")
         {
             Application.LoadLevel(Application.loadedLevel);
         }
