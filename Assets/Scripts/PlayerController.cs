@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (other.gameObject.tag == "Danger")
+        if (other.gameObject.tag == "danger")
         {
             Application.LoadLevel(Application.loadedLevel);
         }
