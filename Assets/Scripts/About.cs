@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AboutCanvas : MonoBehaviour
+public class About : MonoBehaviour
 {
     public GameObject MainMenuCanvas;
-    public GameObject aboutCanvas;
+    public GameObject AboutCanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,6 @@ public class AboutCanvas : MonoBehaviour
     public void BackButton()
     {
         MainMenuCanvas.SetActive(true);
-        aboutCanvas.SetActive(false);
+        AboutCanvas.SetActive(false);
     }
 }

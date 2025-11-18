@@ -7,12 +7,14 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject MainMenuCanvas;
     public GameObject AboutCanvas;
+    public GameObject LevelCanvas;
 
     // Start is called before the first frame update
     void Start()
     {
         MainMenuCanvas.SetActive(true);
         AboutCanvas.SetActive(false);
+        LevelCanvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -22,8 +24,9 @@ public class MainMenu : MonoBehaviour
     }
 
     public void PlayButton()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level");
+    {   
+        MainMenuCanvas.SetActive(false);
+        LevelCanvas.SetActive(true);
     }
 
     public void AboutButton()
