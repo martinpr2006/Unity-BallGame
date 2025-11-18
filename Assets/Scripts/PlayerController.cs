@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     public int score;
     public AudioSource coinSound;
+    private bool canMove = true;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,10 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        rb.AddForce(movement * speed);
+        if (canMove)
+        {
+            rb.AddForce(movement * speed);
+        }
  
         // Restart level
         if (Input.GetKeyDown(KeyCode.R))
@@ -39,7 +43,7 @@ public class PlayerController : MonoBehaviour
         // Exit game
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
         }
     }
     
@@ -59,17 +63,30 @@ public class PlayerController : MonoBehaviour
         }
 
         if (other.gameObject.tag == "danger")
+        {   
+            winText.text = "You lost, press R to restart or ESC to exit";
+            canMove = false;
+            if (rb != null)
+            {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+        }
+
+        if (other.gameObject.tag == "freedom")
         {
-            Application.LoadLevel(Application.loadedLevel);
+            winText.text = "You win! Press R to restart or ESC to exit";
+            canMove = false;
+            if (rb != null)
+            {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
         }
     }
 
     void SetScoreText()
     {
         scoreText.text = "Score: " + score.ToString();
-        if (score >= 10)
-        {
-            winText.text = "You win, press R to restart or ESC to exit";
-        }
     }
 }
