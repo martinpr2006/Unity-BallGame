@@ -3897,7 +3897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa7f9fe2e49d6014e8d4f7d67cd7317b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   scoreText: {fileID: 1935004019}
   winText: {fileID: 121333420}
   gate: {fileID: 1411681488}
